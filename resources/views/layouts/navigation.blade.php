@@ -200,7 +200,7 @@
 
 
 @auth
-    @if (Auth::user()->role == 'superadmin' || Auth::role == 'admin')
+    @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin')
         <aside x-data="{ screenWidth: window.innerWidth }" x-init="$watch('screenWidth', value => console.log('Window width:', value));
         window.addEventListener('resize', () => screenWidth = window.innerWidth)" x-show="screenWidth > 780"
             class="fixed z-50 flex flex-col items-center w-16 h-screen py-8 overflow-y-auto bg-white border-r rtl:border-l rtl:border-r-0 dark:bg-gray-900 dark:border-gray-700 transition-colors duration-700">

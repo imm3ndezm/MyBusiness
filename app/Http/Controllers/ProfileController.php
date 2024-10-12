@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -30,6 +31,15 @@ class ProfileController extends Controller
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
+        }
+
+        
+        $user = Auth::user();
+        if ($request->hasFile('profile_photo')) {
+            $imageName = Str::uuid() . '.' . $request->file('profile_photo')->getClientOriginalExtension();
+            $destinationPath = public_path('profile_photos');
+            $request->file('profile_photo')->move($destinationPath, $imageName);
+            $user->profile_photo = 'profile_photos/' . $imageName;
         }
 
         $request->user()->save();
