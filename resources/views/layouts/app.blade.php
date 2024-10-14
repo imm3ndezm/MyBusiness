@@ -34,10 +34,17 @@
 
 
     @include('layouts.navigation')
-    <div class="pt-8">
+    <div class="pt-20">
         @yield('content')
     </div>
 
+    @if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                toastAlert('danger', 'Something failed.', {{ session('error') }});
+            });
+        </script>
+    @endif
     <x-footer />
 </body>
 

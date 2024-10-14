@@ -36,12 +36,24 @@
 
                     @auth
 
-                        <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-nav-link>
+                        @if (Auth::user()->role == 'entrepreneur')
+                            <x-nav-link :href="route('business.create')" :active="request()->routeIs('business.create')">
+                                {{ __('My business') }}
+                            </x-nav-link>
+                        @else
+                            <x-nav-link :href="route('business.create')" :active="request()->routeIs('business.create')">
+                                {{ __('Be one of us!') }}
+                            </x-nav-link>
+                        @endif
 
 
                     @endauth
+                    @guest
+                        <x-nav-link :href="route('business.create')" :active="request()->routeIs('business.create')">
+                            {{ __('Be one of us!') }}
+                        </x-nav-link>
+                    @endguest
+
                 </div>
             </div>
 

@@ -189,7 +189,7 @@
             </header>
             <div x-data="{ selectedTab: 'groups' }" class="w-full pt-5">
                 <div @keydown.right.prevent="$focus.wrap().next()" @keydown.left.prevent="$focus.wrap().previous()"
-                    class="flex justify-center gap-2 overflow-x-auto border-b border-neutral-300 dark:border-neutral-700"
+                    class="flex justify-center gap-2 w-fit max-w-lg mx-auto overflow-x-auto border-b border-neutral-300 dark:border-neutral-700"
                     role="tablist" aria-label="tab options">
                     <button @click="selectedTab = 'groups'" :aria-selected="selectedTab === 'groups'"
                         :tabindex="selectedTab === 'groups' ? '0' : '-1'"

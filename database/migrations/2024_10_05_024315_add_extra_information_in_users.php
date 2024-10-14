@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->unique();
             $table->string('profile_photo')->nullable();
-            $table->enum('role', ['user', 'admin', 'superadmin'])->default('user');
+            $table->enum('role', ['user', 'entrepreneur', 'admin', 'superadmin'])->default('user');
             $table->enum('status', ['Active', 'Pending', 'Inactive', 'Suspended', 'Blocked', 'Deleted', 'Archived'])->default('Active');
         });
     }
