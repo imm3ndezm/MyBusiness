@@ -56,9 +56,6 @@
                 </div>
             @endif
         </div>
-
-
-
         <div class="flex flex-col gap-3" x-data="{
             photo: null,
             photoName: '',
@@ -87,21 +84,15 @@
                 event.target.value = ''; // Reset the input value
             }
         }">
-
-       
-
-           
-
             @if (Auth::user()->profile_photo != null)
-            <x-input-label for="profile_photo" :value="__('Current profile picture')" />
-            <img class="rounded w-36 h-36" src="{{ asset(Auth::user()->profile_photo) }}" alt="{{Auth::user()->username}} avatar">
+                <x-input-label for="profile_photo" :value="__('Current profile picture')" />
+                <img class="rounded w-36 h-36" src="{{ asset(Auth::user()->profile_photo) }}"
+                    alt="{{ Auth::user()->username }} avatar">
 
-            <x-input-label for="profile_photo" :value="__('Update profile photo')" />
+                <x-input-label for="profile_photo" :value="__('Update profile photo')" />
             @else
-            <x-input-label for="profile_photo" :value="__('Upload profile photo')" />
+                <x-input-label for="profile_photo" :value="__('Upload profile photo')" />
             @endif
-
-            
             <div class="flex items-center justify-center w-full">
                 <label for="profile_photo"
                     class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 transition-all duration-700">

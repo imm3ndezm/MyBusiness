@@ -3,8 +3,7 @@
         <x-application-logo />
 
         <p class="text-sm text-gray-600 dark:text-gray-300">© Copyright <span
-                class="font-bold">{{ now()->year }}</span>. All Rights Reserved.</p>
-
-
+                class="font-bold">{{ now()->year }}</span>. All Rights Reserved.
+        </p>
     </div>
 </footer>

@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <x-footer />
+
 </body>
 
 </html>
