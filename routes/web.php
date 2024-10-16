@@ -27,6 +27,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/business/create', [BusinessController::class, 'index'])->name('business.create');
+    Route::get('/business/create', [BusinessController::class, 'store']);
+
 
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });

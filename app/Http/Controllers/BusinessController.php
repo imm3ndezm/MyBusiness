@@ -9,7 +9,7 @@ class BusinessController extends Controller
 {
     public function index()
     {
-        
+
         if (Auth::check()) {
             $user = Auth::user();
             if ($user->role === 'entrepreneur') {
@@ -17,5 +17,10 @@ class BusinessController extends Controller
             }
         }
         return view('business.createbusiness');
+    }
+
+    public function store(Request $request) 
+    {
+        
     }
 }
