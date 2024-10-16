@@ -180,7 +180,7 @@
             <div class="w-full py-3">
                 <x-input-label for="business_description" :value="__('Business description')" />
 
-                
+
                 <x-textarea-input id="business_description" class="block mt-1 w-full" type="text"
                     name="business_description" :value="old('business_description')" required autofocus
                     autocomplete="business_description" />
@@ -188,6 +188,52 @@
 
                 <x-input-error :messages="$errors->get('business_description')" class="mt-2" />
             </div>
+            <div class="w-full py-3">
+                <label for="business_location" class="block font-medium text-sm text-gray-700">
+                    Business Location (lat,lng)
+                </label>
+                <x-text-input id="business_location" class="block mt-1 w-full" type="text" required autofocus
+                    autocomplete="off" />
+                <div class="mt-2 text-sm text-red-600" id="input-error"></div>
+            </div>
+
+            <div class="w-full py-3">
+                <div class="relative w-full h-96">
+                    <iframe id="map-frame" class="absolute top-0 left-0 w-full h-full rounded-md"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3946.546878692708!2d-89.26537168533176!3d13.678357393157322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sus!4v1697397598655!5m2!1ses!2sus"
+                        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+
+
+
         </div>
+        <script>
+            const input = document.getElementById('business_location');
+            const mapFrame = document.getElementById('map-frame');
+            const inputError = document.getElementById('input-error');
+
+
+            input.addEventListener('keyup', () => {
+                const coords = input.value.split(',').map(coord => coord.trim());
+
+
+                if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+                    const lat = parseFloat(coords[0]);
+                    const lng = parseFloat(coords[1]);
+
+
+                    const newSrc =
+                        `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3946.546878692708!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sus!4v1697397598655!5m2!1ses!2sus`;
+                    mapFrame.src = newSrc;
+                    inputError.textContent = '';
+                } else {
+                    inputError.textContent =
+                        'Please, add valid coordinates with format: latitude, length';
+                }
+            });
+        </script>
     @endsection
+
 </x-app-layout>

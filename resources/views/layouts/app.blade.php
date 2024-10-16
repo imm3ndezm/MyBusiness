@@ -45,7 +45,9 @@
             });
         </script>
     @endif
-   
+
 </body>
+
+<x-footer />
 
 </html>
