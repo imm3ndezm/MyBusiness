@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('business', function (Blueprint $table) {
             $table->id();
-            $table->string('photo')->nullable();
-            $table->string('banner')->nullable();
-            $table->string('description')->nullable();
+            $table->string('photo');
+            $table->string('banner');
             $table->string('name');
             $table->string('nickname')->unique();
             $table->string('owner_id')->unique();

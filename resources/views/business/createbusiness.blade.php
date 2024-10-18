@@ -4,7 +4,7 @@
     @endsection
 
     @section('content')
-        <form action="{{ route('business.create') }}" method="POST">
+        <form action="{{ route('business.create') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div
                 class="bg-gray-100 dark:bg-gray-800 transition-colors duration-700 rounded-md w-full p-5 mx-auto max-w-screen-xl shadow-xl">
@@ -218,8 +218,8 @@
 
                 <div class="w-full py-3">
                     <x-input-label for="url" :value="__('Business webpage')" />
-                    <x-text-input id="url" class="block mt-1 w-full" type="url" name="url" :value="old('email')"
-                        required autofocus autocomplete="url" />
+                    <x-text-input id="url" class="block mt-1 w-full" type="url" name="url"
+                        :value="old('email')" required autofocus autocomplete="url" />
                     <x-input-error :messages="$errors->get('url')" class="mt-2" />
                 </div>
 
@@ -240,7 +240,7 @@
                     <x-primary-button>{{ __('Save') }}</x-primary-button>
                 </div>
             </div>
-            
+
         </form>
         <script>
             document.addEventListener('alpine:init', () => {
