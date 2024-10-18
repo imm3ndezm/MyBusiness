@@ -37,12 +37,12 @@
                             event.target.value = ''; // Reset the input value
                         }
                     }">
-                        <x-input-label for="business_photo" :value="__('Upload business photo')" />
+                        <x-input-label for="photo" :value="__('Upload business photo')" />
 
 
 
                         <div class="flex items-center justify-center w-full">
-                            <label for="business_photo"
+                            <label for="photo"
                                 class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 transition-all duration-700">
 
                                 <!-- Preview Section -->
@@ -75,11 +75,11 @@
                                     <div class="text-red-500 text-sm mt-2" x-text="errorMessage"></div>
                                 </template>
 
-                                <input id="business_photo" name="business_photo" type="file" class="hidden"
+                                <input id="photo" name="photo" type="file" class="hidden"
                                     accept=".jpeg, .png, .jpg, .svg" @change="previewPhoto">
                             </label>
                         </div>
-                        <x-input-error class="mt-2" :messages="$errors->get('business_photo')" />
+                        <x-input-error class="mt-2" :messages="$errors->get('photo')" />
                     </div>
 
 
@@ -114,9 +114,9 @@
 
 
 
-                        <x-input-label for="business_banner" :value="__('Upload business banner')" />
+                        <x-input-label for="banner" :value="__('Upload business banner')" />
                         <div class="flex items-center justify-center w-full">
-                            <label for="business_banner"
+                            <label for="banner"
                                 class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600 transition-all duration-700">
 
                                 <!-- Preview Section -->
@@ -149,60 +149,78 @@
                                     <div class="text-red-500 text-sm mt-2" x-text="errorMessage"></div>
                                 </template>
 
-                                <input id="business_banner" name="business_banner" type="file" class="hidden"
+                                <input id="banner" name="banner" type="file" class="hidden"
                                     accept=".jpeg, .png, .jpg, .svg" @change="previewPhoto">
                             </label>
                         </div>
-                        <x-input-error class="mt-2" :messages="$errors->get('business_banner')" />
+                        <x-input-error class="mt-2" :messages="$errors->get('banner')" />
                     </div>
                 </div>
 
 
                 <div class="flex flex-row gap-5 py-3">
                     <div class="w-full">
-                        <x-input-label for="business_name" :value="__('Business name')" />
-                        <x-text-input id="business_name" class="block mt-1 w-full" type="text" name="business_name"
-                            :value="old('business_name')" required autofocus autocomplete="name" />
-                        <x-input-error :messages="$errors->get('business_name')" class="mt-2" />
+                        <x-input-label for="name" :value="__('Business name')" />
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
+                            :value="old('name')" required autofocus autocomplete="name" />
+                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     </div>
                     <div class="w-full">
-                        <x-input-label for="business_nickname" :value="__('Business nickname')" />
-                        <x-text-input id="business_nickname" class="block mt-1 w-full" type="text"
-                            name="business_nickname" :value="old('business_nickname')" required autofocus
-                            autocomplete="business_nickname" />
-                        <x-input-error :messages="$errors->get('business_nickname')" class="mt-2" />
+                        <x-input-label for="nickname" :value="__('Business nickname')" />
+                        <x-text-input id="nickname" class="block mt-1 w-full" type="text" name="nickname"
+                            :value="old('nickname')" required autofocus autocomplete="nickname" />
+                        <x-input-error :messages="$errors->get('nickname')" class="mt-2" />
                     </div>
                     <div x-data="idMask" class="w-full">
-                        <x-input-label for="business_owner_id" :value="__('Business owner ID')" />
-                        <x-text-input id="business_owner_id" class="block mt-1 w-full" type="text"
-                            name="business_owner_id" x-model="id" @input="applyMask" required autofocus
-                            autocomplete="business_owner_id" maxlength="10" />
-                        <x-input-error :messages="$errors->get('business_owner_id')" class="mt-2" />
+                        <x-input-label for="owner_id" :value="__('Business owner ID')" />
+                        <x-text-input id="owner_id" class="block mt-1 w-full" type="text" name="owner_id"
+                            x-model="id" @input="applyMask" required autofocus autocomplete="owner_id"
+                            maxlength="10" />
+                        <x-input-error :messages="$errors->get('owner_id')" class="mt-2" />
                     </div>
                 </div>
 
                 <div class="w-full py-3">
-                    <x-input-label for="business_email" :value="__('Business email')" />
-                    <x-text-input id="business_email" class="block mt-1 w-full" type="email" name="business_email"
-                        :value="old('business_email')" required autofocus autocomplete="business_email" />
-                    <x-input-error :messages="$errors->get('business_email')" class="mt-2" />
+                    <x-input-label for="email" :value="__('Business email')" />
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                        :value="old('email')" required autofocus autocomplete="email" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
                 <div class="w-full py-3">
-                    <x-input-label for="business_description" :value="__('Business description')" />
+                    <x-input-label for="description" :value="__('Business description')" />
 
 
-                    <x-textareainput id="business_description" class="block mt-1 w-full" type="text"
-                        name="business_description" :value="old('business_description')" required autofocus
-                        autocomplete="business_description" />
+                    <x-textareainput id="description" class="block mt-1 w-full" type="text" name="description"
+                        :value="old('description')" required autofocus autocomplete="description" />
 
 
-                    <x-input-error :messages="$errors->get('business_description')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
                 </div>
+
+                <div class="flex flex-row gap-5 py-3">
+                    <div class="w-full">
+                        <x-input-label for="location" :value="__('Business location (lat, lng)')" />
+                        <x-text-input id="location" class="block mt-1 w-full" type="text" required autofocus
+                            autocomplete="off" />
+                        <div class="mt-2 text-sm text-red-600" id="input-error"></div>
+                    </div>
+
+
+                    <div x-data="idPhoneMask" class="w-full">
+                        <x-input-label for="phone" :value="__('Business phone')" />
+                        <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"
+                            x-model="id" @input="applyPhoneMask" required autofocus autocomplete="phone"
+                            maxlength="10" />
+                        <x-input-error :messages="$errors->get('phone')" class="mt-2" />
+                    </div>
+
+                </div>
+
                 <div class="w-full py-3">
-                    <x-input-label for="business_location" :value="__('Business location (lat, lng)')" />
-                    <x-text-input id="business_location" class="block mt-1 w-full" type="text" required autofocus
-                        autocomplete="off" />
-                    <div class="mt-2 text-sm text-red-600" id="input-error"></div>
+                    <x-input-label for="url" :value="__('Business webpage')" />
+                    <x-text-input id="url" class="block mt-1 w-full" type="url" name="url" :value="old('email')"
+                        required autofocus autocomplete="url" />
+                    <x-input-error :messages="$errors->get('url')" class="mt-2" />
                 </div>
 
                 <div class="w-full py-3">
@@ -222,6 +240,7 @@
                     <x-primary-button>{{ __('Save') }}</x-primary-button>
                 </div>
             </div>
+            
         </form>
         <script>
             document.addEventListener('alpine:init', () => {
@@ -240,9 +259,24 @@
                         this.id = value;
                     }
                 }));
+
+                Alpine.data('idPhoneMask', () => ({
+                    id: '',
+
+                    applyPhoneMask() {
+                        let value = this.id.replace(/\D/g, '');
+
+                        if (value.length > 4) {
+                            value = value.slice(0, 4) + '-' + value.slice(4, 8);
+                        }
+
+                        this.id = value;
+
+                    }
+                }));
             });
 
-            const input = document.getElementById('business_location');
+            const input = document.getElementById('location');
             const mapFrame = document.getElementById('map-frame');
             const inputError = document.getElementById('input-error');
 

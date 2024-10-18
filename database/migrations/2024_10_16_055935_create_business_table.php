@@ -13,14 +13,19 @@ return new class extends Migration
     {
         Schema::create('business', function (Blueprint $table) {
             $table->id();
-            $table->string('business_photo')->nullable();
-            $table->string('business_description')->nullable();
-            $table->string('business_name');
-            $table->string('business_nickname')->unique();
-            $table->string('business_owner_id')->unique();
-            $table->string('business_email')->unique();
-            $table->string('business_description');
-            $table->string('business_location');
+            $table->string('photo')->nullable();
+            $table->string('banner')->nullable();
+            $table->string('description')->nullable();
+            $table->string('name');
+            $table->string('nickname')->unique();
+            $table->string('owner_id')->unique();
+            $table->string('email')->unique();
+            $table->string('description');
+            $table->string('location');
+            $table->string('phone');
+            $table->string('url')->nullable();
+            $table->string('tags')->nullable(); 
+            $table->enum('status', ['Active', 'Pending', 'Inactive', 'Suspended', 'Deleted', 'Archived'])->default('Pending');
             $table->timestamps();
         });
     }
